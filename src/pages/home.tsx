@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from "react";
-import { EquipmentsList } from "../components";
+import { EquipmentsList } from "@/components";
 import { invoke } from "@tauri-apps/api/core";
 import { Equipment, FindEquipmentsDTO } from "../types";
 import { EquipmentSearch } from "../components/equipment/equipment-search";
@@ -28,13 +28,22 @@ export default function Home(): JSX.Element {
     (async () => handleSearch(searchState))();
   }, [searchState]);
 
-
   return (
-    <div>
-      <h1>Home</h1>
-      <EquipmentSearch setSearchState={setSearchStateHandler} />
-      <NavLink to="/equipment/create">Create Equipment</NavLink>
-      <EquipmentsList equipments={equipments} />
-    </div>
-  )
+    <main className="dark bg-gray-900 text-white min-h-screen">
+      <section className="grid grid-cols-1 md:grid-cols-4">
+        <div className="bg-gray-800 p-4 md:col-span-1 md:min-h-screen">
+          <EquipmentSearch setSearchState={setSearchStateHandler} />
+        </div>
+        <div className="bg-gray-900 md:col-span-3">
+          <div className="bg-gray-800 p-4 flex">
+            <NavLink to="/equipment/create"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              New Equipment
+            </NavLink>
+          </div>
+          <EquipmentsList equipments={equipments} />
+        </div>
+      </section>
+    </main>
+  );
 }
