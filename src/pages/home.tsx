@@ -38,7 +38,7 @@ export default function Home(): JSX.Element {
         <div className="bg-gray-900 md:col-span-3">
           <div className="bg-gray-800 p-4 flex">
             <Button onClick={() => setIsCreateEquipmentDialogOpen(true)}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
               New Equipment
             </Button>
           </div>

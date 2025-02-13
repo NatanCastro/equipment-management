@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { CreateEquipmentDTO, Equipment } from "../../types";
 import { FormInput } from "..";
 import { invoke } from "@tauri-apps/api/core";
+import { Button } from "../ui/button";
 
 type CreateEquipmentDialogProps = {
   isOpen: boolean;
@@ -32,12 +33,12 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
             <input type="text" {...register("description")} className="w-full p-2 bg-gray-700 rounded" />
           </FormInput>
           <div className="flex justify-end gap-2">
-            <button type="button" onClick={onClose} className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">
+            <Button onClick={onClose} className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">
               Cancel
-            </button>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            </Button>
+            <Button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" type="submit">
               Create
-            </button>
+            </Button>
           </div>
         </form>
       </div>
