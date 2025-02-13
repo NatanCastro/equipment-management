@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import Home from "../pages/home";
-import CreateEquipment from "../pages/create-equipement";
+import Home from "@/pages/home";
 
 export default function Router() {
   return (
@@ -8,7 +7,6 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/equipment/create" element={<CreateEquipment />} />
       </Routes>
     </BrowserRouter>
 

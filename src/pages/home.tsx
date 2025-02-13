@@ -1,11 +1,12 @@
 import { JSX, useEffect, useState } from "react";
-import { EquipmentsList } from "@/components";
+import { CreateEquipmentDialog, EquipmentsList } from "@/components";
 import { invoke } from "@tauri-apps/api/core";
 import { Equipment, FindEquipmentsDTO } from "../types";
 import { EquipmentSearch } from "../components/equipment/equipment-search";
-import { NavLink } from "react-router";
+import { Button } from "@/components/ui/button";
 
 export default function Home(): JSX.Element {
+  const [isCreateEquipmentDialogOpen, setIsCreateEquipmentDialogOpen] = useState(false);
   const [equipments, setEquipments] = useState<Equipment[]>([]);
   const [searchState, setSearchState] = useState<FindEquipmentsDTO>({
     service_tag: "",
@@ -36,12 +37,14 @@ export default function Home(): JSX.Element {
         </div>
         <div className="bg-gray-900 md:col-span-3">
           <div className="bg-gray-800 p-4 flex">
-            <NavLink to="/equipment/create"
+            <Button onClick={() => setIsCreateEquipmentDialogOpen(true)}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               New Equipment
-            </NavLink>
+            </Button>
           </div>
           <EquipmentsList equipments={equipments} />
+
+          <CreateEquipmentDialog isOpen={isCreateEquipmentDialogOpen} onClose={() => setIsCreateEquipmentDialogOpen(false)} />
         </div>
       </section>
     </main>
