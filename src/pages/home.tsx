@@ -31,11 +31,8 @@ export default function Home(): JSX.Element {
 
   return (
     <main className="dark bg-gray-900 text-white min-h-screen">
-      <section className="grid grid-cols-1 md:grid-cols-4">
-        <div className="bg-gray-800 p-4 md:col-span-1 md:min-h-screen">
-          <EquipmentSearch setSearchState={setSearchStateHandler} />
-        </div>
-        <div className="bg-gray-900 md:col-span-3">
+      <section className="grid grid-cols-1 md:grid-cols-12">
+        <div className="bg-gray-900 md:col-span-10">
           <div className="bg-gray-800 p-4 flex">
             <Button onClick={() => setIsCreateEquipmentDialogOpen(true)}
               className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
@@ -44,7 +41,13 @@ export default function Home(): JSX.Element {
           </div>
           <EquipmentsList equipments={equipments} />
 
-          <CreateEquipmentDialog isOpen={isCreateEquipmentDialogOpen} onClose={() => setIsCreateEquipmentDialogOpen(false)} />
+          <CreateEquipmentDialog
+            isOpen={isCreateEquipmentDialogOpen}
+            onClose={() => setIsCreateEquipmentDialogOpen(false)}
+          />
+        </div>
+        <div className="bg-gray-800 p-4 md:col-span-2 md:min-h-screen">
+          <EquipmentSearch setSearchState={setSearchStateHandler} />
         </div>
       </section>
     </main>
