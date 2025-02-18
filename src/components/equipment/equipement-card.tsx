@@ -16,13 +16,19 @@ function formatDateString(dateString: string) {
 
 export function EquipmentCard({ equipment }: EquipmentCardProps) {
   return (
-    <Card className="p-4 shadow-md rounded-lg">
-      <CardContent>
-        <p><strong>Tag de Serviço:</strong> {equipment.service_tag}</p>
-        <p><strong>Nome:</strong> {equipment.name}</p>
-        <p><strong>Descrição:</strong> {truncateText(equipment.description)}</p>
-        <p><strong>Data de Criação:</strong> {formatDateString(equipment.created_at)}</p>
-        <p><strong>Ultima Atualização:</strong> {formatDateString(equipment.updated_at)}</p>
+    <Card className="shadow-2xl rounded-lg border-0 bg-gray-800">
+      <CardContent className="grid grid-cols-2 gap-4 p-4">
+        <div className="col-span-2">
+          <p className="font-bold text-center">{equipment.service_tag}</p>
+        </div>
+        <div className="col-span-2">
+          <p className="text-center">{equipment.name}</p>
+        </div>
+        <div className="col-span-2">
+          <p className="text-justify">{truncateText(equipment.description, 50)}</p>
+        </div>
+        <div>data de criação: {formatDateString(equipment.created_at)}</div>
+        <div>data de atualização: {formatDateString(equipment.updated_at)}</div>
       </CardContent>
     </Card>
   );
