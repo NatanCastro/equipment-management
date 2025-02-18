@@ -11,7 +11,9 @@
     "devtools": "react-devtools"
   },
   "dependencies": {
+    "@hookform/resolvers": "^4.1.0",
     "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@tailwindcss/vite": "^4.0.5",
     "@tauri-apps/api": "^2.2.0",
@@ -25,7 +27,8 @@
     "react-router": "^7.1.5",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.6",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.2.7",

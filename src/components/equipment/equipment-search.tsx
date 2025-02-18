@@ -1,48 +1,66 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { type FindEquipmentsDTO } from "../../types";
-import { FormInput } from "../";
+import { type FindEquipmentsDTO } from "@/types";
 import { Button } from "@/components/ui/button";
+import { Form, FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 type EquipmentSearchProps = {
   setSearchState: (state: FindEquipmentsDTO) => void;
 };
 
 export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
-  const { register, handleSubmit } = useForm<FindEquipmentsDTO>();
+  const form = useForm<FindEquipmentsDTO>();
 
   const onSubmit: SubmitHandler<FindEquipmentsDTO> = (data) => {
     setSearchState(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 p-4 rounded-lg shadow-md">
-      <FormInput label="Service Tag" inputName="service_tag">
-        <input
-          type="text"
-          {...register("service_tag", { value: "" })}
-          className="p-2 border rounded w-full"
-          placeholder="Enter Service Tag"
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 p-4">
+        <FormField
+          control={form.control}
+          name="service_tag"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tag de Serviço:</FormLabel>
+              <FormControl>
+                <Input placeholder="145142" {...field} />
+              </FormControl>
+            </FormItem>
+          )}
         />
-      </FormInput>
-      <FormInput label="Name" inputName="name">
-        <input
-          type="text"
-          {...register("name", { value: "" })}
-          className="p-2 border rounded w-full"
-          placeholder="Enter Name"
+
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Nome:</FormLabel>
+              <FormControl>
+                <Input placeholder="computador dell" {...field} />
+              </FormControl>
+            </FormItem>
+          )}
         />
-      </FormInput>
-      <FormInput label="Description" inputName="description">
-        <input
-          type="text"
-          {...register("description", { value: "" })}
-          className="p-2 border rounded w-full"
-          placeholder="Enter Description"
+
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Descrição:</FormLabel>
+              <FormControl>
+                <Input placeholder="16gb de ram..." {...field} />
+              </FormControl>
+            </FormItem>
+          )}
         />
-      </FormInput>
-      <Button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-        Search
-      </Button>
-    </form>
+
+        <Button type="submit" className="w-full bg-blue-700">
+          Pesquisar
+        </Button>
+      </form>
+    </Form>
   );
 }
