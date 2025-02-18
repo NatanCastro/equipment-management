@@ -18,11 +18,11 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
   return (
     <Card className="p-4 shadow-md rounded-lg">
       <CardContent>
-        <p><strong>Service Tag:</strong> {equipment.service_tag}</p>
-        <p><strong>Name:</strong> {equipment.name}</p>
-        <p><strong>Description:</strong> {truncateText(equipment.description)}</p>
-        <p><strong>Created At:</strong> {formatDateString(equipment.created_at)}</p>
-        <p><strong>Updated At:</strong> {formatDateString(equipment.updated_at)}</p>
+        <p><strong>Tag de Serviço:</strong> {equipment.service_tag}</p>
+        <p><strong>Nome:</strong> {equipment.name}</p>
+        <p><strong>Descrição:</strong> {truncateText(equipment.description)}</p>
+        <p><strong>Data de Criação:</strong> {formatDateString(equipment.created_at)}</p>
+        <p><strong>Ultima Atualização:</strong> {formatDateString(equipment.updated_at)}</p>
       </CardContent>
     </Card>
   );

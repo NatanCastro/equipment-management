@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
           <div className="bg-gray-800 p-4 flex">
             <Button onClick={() => setIsCreateEquipmentDialogOpen(true)}
               className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-              New Equipment
+              Criar Equipamento
             </Button>
           </div>
           <EquipmentsList equipments={equipments} />
@@ -47,6 +47,7 @@ export default function Home(): JSX.Element {
           />
         </div>
         <div className="bg-gray-800 p-4 md:col-span-2 md:min-h-screen">
+          <h2 className="text-2xl font-bold text-center">Pesquisa</h2>
           <EquipmentSearch setSearchState={setSearchStateHandler} />
         </div>
       </section>
