@@ -1,9 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { CreateEquipmentDTO, Equipment } from "@/types";
-import { FormInput } from "..";
+import { CreateEquipmentDTO } from "@/types/equipment";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 type CreateEquipmentDialogProps = {
   isOpen: boolean;
@@ -11,13 +12,12 @@ type CreateEquipmentDialogProps = {
 };
 
 export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialogProps) {
-  const { register, handleSubmit, reset } = useForm<CreateEquipmentDTO>();
+  const form = useForm<CreateEquipmentDTO>();
 
   const onSubmit: SubmitHandler<CreateEquipmentDTO> = async (data) => {
-    const newEquipment = await invoke("create_equipment", { dto: data }) as Equipment;
-    console.log(newEquipment);
-    reset(); // Clear the form
-    onClose(); // Close modal after creating
+    await invoke("create_equipment", { dto: data });
+    form.reset(); // Limpa o formulário
+    onClose(); // Fecha o modal após criar
   };
 
   return (
@@ -26,25 +26,59 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">Create New Equipment</DialogTitle>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          <FormInput label="Service Tag" inputName="service_tag">
-            <input type="text" {...register("service_tag")} className="w-full p-2 bg-gray-700 rounded" />
-          </FormInput>
-          <FormInput label="Name" inputName="name">
-            <input type="text" {...register("name")} className="w-full p-2 bg-gray-700 rounded" />
-          </FormInput>
-          <FormInput label="Description" inputName="description">
-            <input type="text" {...register("description")} className="w-full p-2 bg-gray-700 rounded" />
-          </FormInput>
-          <DialogFooter className="flex justify-end gap-2">
-            <Button className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded" variant="destructive" onClick={onClose}>
-              Cancel
-            </Button>
-            <Button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" type="submit">
-              Create
-            </Button>
-          </DialogFooter>
-        </form>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+            <FormField
+              control={form.control}
+              name="service_tag"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Service Tag</FormLabel>
+                  <FormControl>
+                    <Input {...field} className="bg-gray-700" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} className="bg-gray-700" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Input {...field} className="bg-gray-700" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <DialogFooter className="flex justify-end gap-2">
+              <Button variant="destructive" onClick={onClose}>
+                Cancel
+              </Button>
+              <Button type="submit">Create</Button>
+            </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
