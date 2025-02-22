@@ -8,3 +8,5 @@ CREATE TABLE IF NOT EXISTS equipment (
     created_at TEXT NOT NULL default (datetime('now')),
     updated_at TEXT NOT NULL default (datetime('now'))
 );
+
+CREATE INDEX IF NOT EXISTS equipment_service_tag_index ON equipment (service_tag);
