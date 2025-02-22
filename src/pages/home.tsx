@@ -29,10 +29,7 @@ export default function Home(): JSX.Element {
 
   return (
     <main className="dark bg-gray-900 text-white min-h-screen grid grid-cols-1 md:grid-cols-12">
-      <aside className="bg-gray-800 p-4 md:col-span-2 md:min-h-screen">
-        <h2 className="text-2xl font-bold text-center">Menu</h2>
-      </aside>
-      <section className="bg-gray-900 md:col-span-8">
+      <section className="bg-gray-900 md:col-span-10">
         <div className="bg-gray-800 p-4 flex">
           <Button
             onClick={() => setIsCreateEquipmentDialogOpen(true)}
