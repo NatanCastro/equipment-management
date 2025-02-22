@@ -6,7 +6,7 @@ export type EquipmentLocation = {
   updated_at: string;
 };
 
-export type FindEquipmentLocationDTO = {
+export type FindEquipmentLocationsDTO = {
   name: string;
   description: string;
 };
