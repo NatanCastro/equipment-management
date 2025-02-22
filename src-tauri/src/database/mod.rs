@@ -4,6 +4,7 @@ use tauri::{App, Manager};
 use crate::logger::Logger;
 
 pub mod equipment;
+pub mod equipment_location;
 
 pub type Db = Pool<Sqlite>;
 
