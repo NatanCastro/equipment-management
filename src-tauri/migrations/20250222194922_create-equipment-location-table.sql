@@ -4,7 +4,7 @@ CREATE TABLE equipment_location (
     name TEXT NOT NULL,
     description TEXT NOT NULL,
     created_at TEXT NOT NULL default (datetime('now')),
-    updated_at TEXT NOT NULL default (datetime('now')),
+    updated_at TEXT NOT NULL default (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS equipment_location_name_index ON equipment_location (name);
