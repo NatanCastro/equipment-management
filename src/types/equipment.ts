@@ -30,3 +30,7 @@ export type FindEquipmentsDTO = {
   name: string,
   description: string,
 }
+
+export type FindOneEquipmentDTO = {
+  id: string,
+}
