@@ -1,10 +1,10 @@
-import { JSX, useEffect, useState } from "react";
 import { CreateEquipmentDialog, EquipmentsList } from "@/components";
-import { invoke } from "@tauri-apps/api/core";
-import { Equipment, FindEquipmentsDTO } from "../types";
-import { EquipmentSearch } from "../components/equipment/equipment-search";
 import { Button } from "@/components/ui/button";
 import { useEquipmentStore } from "@/hooks/use-equipement";
+import { Equipment, FindEquipmentsDTO } from "@/types/equipment";
+import { invoke } from "@tauri-apps/api/core";
+import { JSX, useEffect, useState } from "react";
+import { EquipmentSearch } from "../components/equipment/equipment-search";
 
 export default function Home(): JSX.Element {
   const {
