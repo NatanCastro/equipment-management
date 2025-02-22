@@ -34,8 +34,9 @@ export default function Home(): JSX.Element {
       <section className="grid grid-cols-1 md:grid-cols-12">
         <div className="bg-gray-900 md:col-span-10">
           <div className="bg-gray-800 p-4 flex">
-            <Button onClick={() => setIsCreateEquipmentDialogOpen(true)}
-              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+            <Button
+              onClick={() => setIsCreateEquipmentDialogOpen(true)}
+              className="bg-blue-700 hover:bg-blue-600 transition-colors duration-200 text-white py-2 px-4 rounded">
               Criar Equipamento
             </Button>
           </div>
