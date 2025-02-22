@@ -1,5 +1,4 @@
 use database::{setup_db, Db};
-use handlers::equipment_handlers::*;
 use logger::Logger;
 use tauri::Manager;
 
@@ -17,11 +16,16 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
-            create_equipment,
-            find_equipments,
-            find_one_equipment,
-            update_equipment,
-            delete_equipment
+            handlers::create_equipment,
+            handlers::find_equipments,
+            handlers::find_one_equipment,
+            handlers::update_equipment,
+            handlers::delete_equipment,
+            handlers::create_equipment_location,
+            handlers::find_equipment_locations,
+            handlers::find_one_equipment_location,
+            handlers::update_equipment_location,
+            handlers::delete_equipment_location
         ])
         .setup(|app| {
             tauri::async_runtime::block_on(async move {
