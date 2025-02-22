@@ -1,5 +1,6 @@
 import { Equipment } from "@/types";
 import { Card, CardContent } from "../ui/card";
+import { NavLink } from "react-router";
 
 type EquipmentCardProps = {
   equipment: Equipment;
@@ -17,18 +18,16 @@ function formatDateString(dateString: string) {
 export function EquipmentCard({ equipment }: EquipmentCardProps) {
   return (
     <Card className="shadow-2xl rounded-lg border-0 bg-gray-800">
-      <CardContent className="grid grid-cols-2 gap-4 p-4">
-        <div className="col-span-2">
-          <p className="font-bold text-center">{equipment.service_tag}</p>
-        </div>
-        <div className="col-span-2">
-          <p className="text-center">{equipment.name}</p>
-        </div>
-        <div className="col-span-2">
-          <p className="text-justify">{truncateText(equipment.description, 50)}</p>
-        </div>
-        <div>data de criação: {formatDateString(equipment.created_at)}</div>
-        <div>data de atualização: {formatDateString(equipment.updated_at)}</div>
+      <CardContent className="p-4 gap-4 flex flex-col">
+        <h3 className="text-2xl text-center">{equipment.name}</h3>
+        <p className="font-bold">{equipment.service_tag}</p>
+        <p className="text-justify">{truncateText(equipment.description, 50)}</p>
+        <p>ultima atualização: {formatDateString(equipment.updated_at)}</p>
+        <NavLink
+          to={`/equipment/${equipment.id}`}
+          className="bg-blue-700 text-center text-white rounded-lg py-2 hover:bg-blue-600 transition-colors duration-200">
+          Ver mais detalhes
+        </NavLink>
       </CardContent>
     </Card>
   );
