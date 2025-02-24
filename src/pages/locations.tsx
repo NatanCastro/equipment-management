@@ -27,12 +27,11 @@ export default function Locations(): JSX.Element {
   }, [equipmentLocationSearchState]);
 
   return (
-    <main className="dark bg-gray-900 text-white min-h-screen grid grid-cols-1 md:grid-cols-12">
-      <section className="bg-gray-900 md:col-span-10">
-        <div className="bg-gray-800 p-4 flex">
+    <main className="dark bg-background text-foreground min-h-screen grid grid-cols-1 md:grid-cols-12">
+      <section className="bg-background md:col-span-10">
+        <div className="bg-card p-4 flex">
           <Button
-            onClick={() => setIsCreateEquipmentDialogOpen(true)}
-            className="bg-blue-700 hover:bg-blue-600 transition-colors duration-200 text-white py-2 px-4 rounded">
+            onClick={() => setIsCreateEquipmentDialogOpen(true)}>
             Criar Localização de Equipamento
           </Button>
         </div>
@@ -44,10 +43,10 @@ export default function Locations(): JSX.Element {
           onClose={() => setIsCreateEquipmentDialogOpen(false)}
         />
       </section>
-      <aside className="bg-gray-800 p-4 md:col-span-2 md:min-h-screen">
+      <aside className="bg-background-secondary p-4 md:col-span-2 md:min-h-screen">
         <h2 className="text-2xl font-bold text-center">Pesquisa</h2>
         <EquipmentLocationSearch setSearchState={setEquipmentLocationSearchState} />
       </aside>
-    </main>
+    </main >
   );
 }

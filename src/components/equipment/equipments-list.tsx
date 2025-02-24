@@ -1,4 +1,4 @@
-import { Equipment } from "../../types"
+import { Equipment } from "@/types/equipment"
 import { EquipmentCard } from "./equipement-card";
 
 

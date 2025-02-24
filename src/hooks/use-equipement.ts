@@ -1,4 +1,4 @@
-import { Equipment, FindEquipmentsDTO } from "@/types";
+import { Equipment, FindEquipmentsDTO } from "@/types/equipment";
 import { create } from "zustand";
 
 type UseEquipmentStore = {
@@ -15,6 +15,7 @@ export const useEquipmentStore = create<UseEquipmentStore>((set) => ({
     service_tag: "",
     name: "",
     description: "",
+    location_id: "all",
   },
   setEquipmentSearchState: (state) => set({ equipmentSearchState: state }),
 }))

@@ -44,7 +44,7 @@ export function EquipmentLocationSearch({ setSearchState }: EquipmentSearchProps
           )}
         />
 
-        <Button type="submit" className="w-full bg-blue-700">
+        <Button type="submit">
           Pesquisar
         </Button>
       </form>

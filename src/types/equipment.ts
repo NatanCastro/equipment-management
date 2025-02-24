@@ -3,6 +3,8 @@ export type Equipment = {
   service_tag: string,
   name: string,
   description: string,
+  location_id: string,
+  location_name: string,
   created_at: string,
   updated_at: string,
 }
@@ -29,6 +31,7 @@ export type FindEquipmentsDTO = {
   service_tag: string,
   name: string,
   description: string,
+  location_id: string,
 }
 
 export type FindOneEquipmentDTO = {

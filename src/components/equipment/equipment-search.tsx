@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { type FindEquipmentsDTO } from "@/types";
+import { type FindEquipmentsDTO } from "@/types/equipment";
 import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -57,7 +57,20 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
           )}
         />
 
-        <Button type="submit" className="w-full bg-blue-700">
+        <FormField
+          control={form.control}
+          name="location_id"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Localização:</FormLabel>
+              <FormControl>
+                <Input placeholder="all" {...field} />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <Button type="submit">
           Pesquisar
         </Button>
       </form>

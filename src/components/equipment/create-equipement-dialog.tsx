@@ -22,7 +22,7 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-96">
+      <DialogContent className="bg-background-secondary text-white p-6 rounded-lg shadow-lg w-96">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">Create New Equipment</DialogTitle>
         </DialogHeader>
@@ -36,7 +36,7 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
                 <FormItem>
                   <FormLabel>Service Tag</FormLabel>
                   <FormControl>
-                    <Input {...field} className="bg-gray-700" />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -50,7 +50,7 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input {...field} className="bg-gray-700" />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -64,7 +64,7 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input {...field} className="bg-gray-700" />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -75,7 +75,7 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
               <Button variant="destructive" onClick={onClose}>
                 Cancel
               </Button>
-              <Button type="submit">Create</Button>
+              <Button type="submit" className="text-foreground">Create</Button>
             </DialogFooter>
           </form>
         </Form>
