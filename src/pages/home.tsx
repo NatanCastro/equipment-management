@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
   return (
     <main className="dark bg-background text-foreground min-h-screen grid grid-cols-1 md:grid-cols-12">
       <section className="bg-background md:col-span-10">
-        <div className="bg-background-secondary p-4 flex">
+        <div className="bg-background p-4 flex">
           <Button onClick={() => setIsCreateEquipmentDialogOpen(true)} variant="default">
             Criar Equipamento
           </Button>
@@ -42,7 +42,7 @@ export default function Home(): JSX.Element {
           onClose={() => setIsCreateEquipmentDialogOpen(false)}
         />
       </section>
-      <aside className="bg-background-secondary p-4 md:col-span-2 md:min-h-screen">
+      <aside className="bg-background p-4 md:col-span-2 md:min-h-screen">
         <h2 className="text-2xl font-bold text-center text-primary">
           Pesquisa
         </h2>
