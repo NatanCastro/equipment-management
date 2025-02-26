@@ -1,12 +1,6 @@
-import { Equipment, FindEquipmentsDTO } from "@/types/equipment";
+import { UseEquipmentStore } from "@/data/stores";
 import { create } from "zustand";
 
-type UseEquipmentStore = {
-  equipments: Equipment[];
-  setEquipments: (equipments: Equipment[]) => void;
-  equipmentSearchState: FindEquipmentsDTO;
-  setEquipmentSearchState: (state: FindEquipmentsDTO) => void;
-};
 
 export const useEquipmentStore = create<UseEquipmentStore>((set) => ({
   equipments: [],

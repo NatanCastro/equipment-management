@@ -1,12 +1,6 @@
-import { EquipmentLocation, FindEquipmentLocationsDTO } from "@/types/equipment-location";
+import { UseEquipmentLocation } from "@/data/stores/equipment-location-store";
 import { create } from "zustand";
 
-type UseEquipmentLocation = {
-  equipmentLocations: EquipmentLocation[];
-  setEquipmentLocations: (equipmentLocations: EquipmentLocation[]) => void;
-  equipmentLocationSearchState: FindEquipmentLocationsDTO;
-  setEquipmentLocationSearchState: (state: FindEquipmentLocationsDTO) => void;
-}
 
 
 export const useEquipmentLocationStore = create<UseEquipmentLocation>()((set) => ({
