@@ -1,14 +1,3 @@
-export type Equipment = {
-  id: string,
-  service_tag: string,
-  name: string,
-  description: string,
-  location_id: string,
-  location_name: string,
-  created_at: string,
-  updated_at: string,
-}
-
 export type CreateEquipmentDTO = {
   service_tag: string,
   name: string,
