@@ -1,8 +1,8 @@
 import { EquipmentLocation } from "@/domain/models";
-import { EquipmentLocationService } from "@/data/usecases";
+import { EquipmentLocationRepository } from "@/domain/repositories";
 import { invoke } from "@tauri-apps/api/core";
 
-export const equipmentLocationService: EquipmentLocationService = {
+export const equipmentLocationService: EquipmentLocationRepository = {
   findEquipmentLocations: async (dto) => {
     const result: EquipmentLocation[] = await invoke("find_equipment_locations", { dto });
     return result;
