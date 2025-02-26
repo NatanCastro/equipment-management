@@ -32,7 +32,7 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
             Ver mais detalhes
           </NavLink>
         </Button>
-      </CardContent>
-    </Card>
+      </CardContent >
+    </Card >
   )
 }

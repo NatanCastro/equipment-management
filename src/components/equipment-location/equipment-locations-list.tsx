@@ -1,5 +1,5 @@
 import { EquipmentLocation } from "@/types/equipment-location";
-import { EquipmentLocationCard } from "./equipement-card";
+import { EquipmentLocationCard } from "./equipement-location-card";
 
 
 type EquipmentLocationsListProps = {

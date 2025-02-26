@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
   }, [equipmentSearchState]);
 
   return (
-    <main className="dark bg-background text-foreground min-h-screen grid grid-cols-1 md:grid-cols-12">
+    <main className="bg-background text-foreground min-h-screen grid grid-cols-1 md:grid-cols-12">
       <section className="bg-background md:col-span-10">
         <div className="bg-background p-4 flex">
           <Button onClick={() => setIsCreateEquipmentDialogOpen(true)} variant="default">
