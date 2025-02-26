@@ -1,5 +1,5 @@
 import { FindEquipmentsDTO } from "../dtos";
-import { Equipment } from "../models";
+import { Equipment } from "@/domain/models";
 
 export type UseEquipmentStore = {
   equipments: Equipment[];

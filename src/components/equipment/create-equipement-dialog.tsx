@@ -16,8 +16,8 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
 
   const onSubmit: SubmitHandler<CreateEquipmentDTO> = async (data) => {
     await invoke("create_equipment", { dto: data });
-    form.reset(); // Limpa o formulário
-    onClose(); // Fecha o modal após criar
+    form.reset();
+    onClose();
   };
 
   return (

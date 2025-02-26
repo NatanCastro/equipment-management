@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router";
 import { Layout } from "@/layout";
-import React, { Suspense } from "react";
 import LoadingScreen from "@/pages/loading";
+import React, { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
 
 const Home = React.lazy(() => import("@/pages/home"));
 const Locations = React.lazy(() => import("@/pages/locations"));

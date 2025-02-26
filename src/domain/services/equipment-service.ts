@@ -1,4 +1,4 @@
-import { Equipment, EquipmentWithLocation } from "@/data/models";
+import { Equipment, EquipmentWithLocation } from "@/domain/models";
 import { EquipmentService } from "@/data/usecases";
 import { invoke } from "@tauri-apps/api/core";
 

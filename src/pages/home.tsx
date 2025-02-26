@@ -1,12 +1,12 @@
 import { CreateEquipmentDialog, EquipmentsList } from "@/components";
 import { Button } from "@/components/ui/button";
+import { FindEquipmentsDTO } from "@/data/dtos";
+import { Equipment } from "@/domain/models";
+import { equipmentService } from "@/domain/services";
 import { useEquipmentStore } from "@/hooks/use-equipement";
 import { JSX, useEffect, useState } from "react";
-import { EquipmentSearch } from "../components/equipment/equipment-search";
-import { FindEquipmentsDTO } from "@/data/dtos";
-import { Equipment } from "@/data/models";
-import { equipmentService } from "@/domain/services";
 import { useNavigate } from "react-router";
+import { EquipmentSearch } from "../components/equipment/equipment-search";
 
 export default function Home(): JSX.Element {
   const {

@@ -1,4 +1,4 @@
-import { EquipmentLocation } from "@/data/models";
+import { EquipmentLocation } from "@/domain/models";
 import { EquipmentLocationCard } from "./equipement-location-card";
 
 

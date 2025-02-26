@@ -1,5 +1,5 @@
 import { FindEquipmentLocationsDTO } from "../dtos";
-import { EquipmentLocation } from "../models";
+import { EquipmentLocation } from "@/domain/models";
 
 export type UseEquipmentLocation = {
   equipmentLocations: EquipmentLocation[];
