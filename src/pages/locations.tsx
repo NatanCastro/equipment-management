@@ -2,8 +2,8 @@ import { CreateEquipmentLocationDialog, EquipmentLocationSearch, EquipmentLocati
 import { Button } from "@/components/ui/button";
 import { FindEquipmentLocationsDTO } from "@/data/dtos";
 import { EquipmentLocation } from "@/domain/models";
-import { equipmentLocationService } from "@/domain/services";
 import { useEquipmentLocationStore } from "@/hooks/use-equipment-location";
+import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
 import { JSX, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -15,11 +15,12 @@ export default function Locations(): JSX.Element {
     setEquipmentLocationSearchState
   } = useEquipmentLocationStore();
   const [isCreateEquipmentDialogOpen, setIsCreateEquipmentDialogOpen] = useState(false);
+  const { findEquipmentLocations } = useEquipmentLocationService();
   const navigate = useNavigate();
 
 
   async function handleSearch(params: FindEquipmentLocationsDTO) {
-    const equipments: EquipmentLocation[] = await equipmentLocationService.findEquipmentLocations(params);
+    const equipments: EquipmentLocation[] = await findEquipmentLocations(params);
     setEquipmentLocations(equipments);
   }
 

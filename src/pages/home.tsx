@@ -2,11 +2,11 @@ import { CreateEquipmentDialog, EquipmentsList } from "@/components";
 import { Button } from "@/components/ui/button";
 import { FindEquipmentsDTO } from "@/data/dtos";
 import { Equipment } from "@/domain/models";
-import { equipmentService } from "@/domain/services";
 import { useEquipmentStore } from "@/hooks/use-equipement";
 import { JSX, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { EquipmentSearch } from "../components/equipment/equipment-search";
+import { useEquipmentService } from "@/hooks/use-equipment-service";
 
 export default function Home(): JSX.Element {
   const {
@@ -16,11 +16,12 @@ export default function Home(): JSX.Element {
     setEquipmentSearchState
   } = useEquipmentStore();
   const [isCreateEquipmentDialogOpen, setIsCreateEquipmentDialogOpen] = useState(false);
+  const { findEquipments } = useEquipmentService();
   const navigate = useNavigate();
 
 
   async function handleSearch(params: FindEquipmentsDTO) {
-    const equipments: Equipment[] = await equipmentService.findEquipments(params);
+    const equipments: Equipment[] = await findEquipments(params);
     setEquipments(equipments);
   }
 

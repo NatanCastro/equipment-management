@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { CreateEquipmentDTO } from "@/data/dtos";
-import { invoke } from "@tauri-apps/api/core";
+import { useEquipmentService } from "@/hooks/use-equipment-service";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type CreateEquipmentDialogProps = {
@@ -13,9 +13,10 @@ type CreateEquipmentDialogProps = {
 
 export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialogProps) {
   const form = useForm<CreateEquipmentDTO>();
+  const { createEquipment } = useEquipmentService();
 
   const onSubmit: SubmitHandler<CreateEquipmentDTO> = async (data) => {
-    await invoke("create_equipment", { dto: data });
+    await createEquipment(data);
     form.reset();
     onClose();
   };

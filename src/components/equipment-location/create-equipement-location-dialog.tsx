@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { CreateEquipmentLocationDTO } from "@/data/dtos";
-import { equipmentLocationService } from "@/domain/services";
+import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type CreateEquipmentLocationDialogProps = {
@@ -13,9 +13,10 @@ type CreateEquipmentLocationDialogProps = {
 
 export function CreateEquipmentLocationDialog({ isOpen, onClose }: CreateEquipmentLocationDialogProps) {
   const form = useForm<CreateEquipmentLocationDTO>();
+  const { createEquipmentLocation } = useEquipmentLocationService();
 
   const onSubmit: SubmitHandler<CreateEquipmentLocationDTO> = async (data) => {
-    await equipmentLocationService.createEquipmentLocation(data);
+    await createEquipmentLocation(data);
     form.reset();
     onClose();
   };

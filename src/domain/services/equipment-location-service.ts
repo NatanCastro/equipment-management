@@ -1,26 +1,36 @@
+import { FindEquipmentLocationsDTO, CreateEquipmentLocationDTO, UpdateEquipmentLocationDTO, DeleteEquipmentLocationDTO } from "@/data/dtos";
 import { EquipmentLocation } from "@/domain/models";
 import { EquipmentLocationRepository } from "@/domain/repositories";
-import { invoke } from "@tauri-apps/api/core";
 
-export const equipmentLocationService: EquipmentLocationRepository = {
+type EquipmentLocationService = {
+  findEquipmentLocations: (dto: FindEquipmentLocationsDTO) => Promise<EquipmentLocation[]>;
+  findOneEquipmentLocation: (dto: FindEquipmentLocationsDTO) => Promise<EquipmentLocation>;
+  createEquipmentLocation: (dto: CreateEquipmentLocationDTO) => Promise<EquipmentLocation>;
+  updateEquipmentLocation: (dto: UpdateEquipmentLocationDTO) => Promise<EquipmentLocation>;
+  deleteEquipmentLocation: (dto: DeleteEquipmentLocationDTO) => Promise<void>;
+}
+
+type NewEquipmentLocationService = (repository: EquipmentLocationRepository) => EquipmentLocationService;
+
+export const newEquipmentLocationService: NewEquipmentLocationService = (repository: EquipmentLocationRepository) => ({
   findEquipmentLocations: async (dto) => {
-    const result: EquipmentLocation[] = await invoke("find_equipment_locations", { dto });
+    const result: EquipmentLocation[] = await repository.findEquipmentLocations(dto);
     return result;
   },
   findOneEquipmentLocation: async (dto) => {
-    const result: EquipmentLocation = await invoke("find_one_equipment_location", { dto });
+    const result: EquipmentLocation = await repository.findOneEquipmentLocation(dto);
     return result;
   },
   createEquipmentLocation: async (dto) => {
-    const result: EquipmentLocation = await invoke("create_equipment_location", { dto });
+    const result: EquipmentLocation = await repository.createEquipmentLocation(dto);
     return result;
   },
   updateEquipmentLocation: async (dto) => {
-    const result: EquipmentLocation = await invoke("update_equipment_location", { dto });
+    const result: EquipmentLocation = await repository.updateEquipmentLocation(dto);
     return result;
   },
   deleteEquipmentLocation: async (dto) => {
-    const result: EquipmentLocation = await invoke("delete_equipment_location", { dto });
-    return result;
+    await repository.deleteEquipmentLocation(dto);
   },
-}
+})
+
