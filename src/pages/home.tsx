@@ -1,10 +1,12 @@
 import { CreateEquipmentDialog, EquipmentsList } from "@/components";
 import { Button } from "@/components/ui/button";
 import { useEquipmentStore } from "@/hooks/use-equipement";
-import { Equipment, FindEquipmentsDTO } from "@/types/equipment";
-import { invoke } from "@tauri-apps/api/core";
 import { JSX, useEffect, useState } from "react";
 import { EquipmentSearch } from "../components/equipment/equipment-search";
+import { FindEquipmentsDTO } from "@/data/dtos";
+import { Equipment } from "@/data/models";
+import { equipmentService } from "@/domain/services";
+import { useNavigate } from "react-router";
 
 export default function Home(): JSX.Element {
   const {
@@ -14,13 +16,21 @@ export default function Home(): JSX.Element {
     setEquipmentSearchState
   } = useEquipmentStore();
   const [isCreateEquipmentDialogOpen, setIsCreateEquipmentDialogOpen] = useState(false);
+  const navigate = useNavigate();
 
 
   async function handleSearch(params: FindEquipmentsDTO) {
-    const equipments: Equipment[] = await invoke("find_equipments", {
-      dto: params,
-    });
+    const equipments: Equipment[] = await equipmentService.findEquipments(params);
     setEquipments(equipments);
+  }
+
+  function onDialogOpen() {
+    setIsCreateEquipmentDialogOpen(true);
+  }
+
+  function onDialogClose() {
+    setIsCreateEquipmentDialogOpen(false);
+    navigate(0);
   }
 
   useEffect(() => {
@@ -31,7 +41,7 @@ export default function Home(): JSX.Element {
     <main className="bg-background text-foreground min-h-screen grid grid-cols-1 md:grid-cols-12">
       <section className="bg-background md:col-span-10">
         <div className="bg-background p-4 flex">
-          <Button onClick={() => setIsCreateEquipmentDialogOpen(true)} variant="default">
+          <Button onClick={onDialogOpen} variant="default">
             Criar Equipamento
           </Button>
         </div>
@@ -39,7 +49,7 @@ export default function Home(): JSX.Element {
 
         <CreateEquipmentDialog
           isOpen={isCreateEquipmentDialogOpen}
-          onClose={() => setIsCreateEquipmentDialogOpen(false)}
+          onClose={onDialogClose}
         />
       </section>
       <aside className="bg-background p-4 md:col-span-2 md:min-h-screen">
