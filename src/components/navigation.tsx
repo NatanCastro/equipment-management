@@ -1,11 +1,11 @@
 import { NavLink } from "react-router";
 
-export const Navigation = () => {
-  const links = [
-    { name: "Home", path: "/" },
-    { name: "localidades", path: "/localidades" },
-  ];
+const links = [
+  { name: "Home", path: "/" },
+  { name: "localidades", path: "/localidades" },
+];
 
+export const Navigation = () => {
   return (
     <aside className="flex flex-col bg-background-secondary md:min-w-[10vw] md:min-h-screen">
       <h2 className="text-primary text-2xl font-bold text-center mt-8 mb-8">Menu</h2>
