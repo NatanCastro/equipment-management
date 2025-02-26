@@ -1,10 +1,10 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { CreateEquipmentDTO } from "@/types/equipment";
-import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { CreateEquipmentDTO } from "@/data/dtos";
+import { invoke } from "@tauri-apps/api/core";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 type CreateEquipmentDialogProps = {
   isOpen: boolean;

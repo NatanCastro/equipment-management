@@ -1,4 +1,3 @@
 export * from "./equipment";
-export * from "./form-input";
+export * from "./equipment-location";
 export * from "./navigation";
-export * from "./equipment-location"

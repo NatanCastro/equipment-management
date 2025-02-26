@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CreateEquipmentLocationDTO } from "@/types/equipment-location";
-import { invoke } from "@tauri-apps/api/core";
+import { CreateEquipmentLocationDTO } from "@/data/dtos";
+import { equipmentLocationService } from "@/domain/services";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type CreateEquipmentLocationDialogProps = {
@@ -15,7 +15,7 @@ export function CreateEquipmentLocationDialog({ isOpen, onClose }: CreateEquipme
   const form = useForm<CreateEquipmentLocationDTO>();
 
   const onSubmit: SubmitHandler<CreateEquipmentLocationDTO> = async (data) => {
-    await invoke("create_equipment_location", { dto: data });
+    await equipmentLocationService.createEquipmentLocation(data);
     form.reset();
     onClose();
   };

@@ -1,7 +1,7 @@
-import { Equipment } from "@/types/equipment";
-import { Card, CardContent } from "@/components/ui/card";
-import { NavLink } from "react-router";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Equipment } from "@/data/models";
+import { NavLink } from "react-router";
 
 type EquipmentCardProps = {
   equipment: Equipment;

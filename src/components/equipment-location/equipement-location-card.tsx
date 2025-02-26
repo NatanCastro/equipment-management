@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { EquipmentLocation } from "@/types/equipment-location";
+import { EquipmentLocation } from "@/data/models";
 import { NavLink } from "react-router";
 
 type EquipmentCardProps = {
