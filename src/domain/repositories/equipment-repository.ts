@@ -1,10 +1,11 @@
-import { FindEquipmentsDTO, CreateEquipmentDTO, UpdateEquipmentDTO, DeleteEquipmentDTO } from "@/data/dtos";
+import { FindEquipmentsDTO, CreateEquipmentDTO, UpdateEquipmentDTO, DeleteEquipmentDTO, FindOneEquipmentDTO } from "@/data/dtos";
 import { Equipment, EquipmentWithLocation } from "@/domain/models";
+import { Result } from "@/types/result";
 
 export type EquipmentRepository = {
-  findEquipments: (dto: FindEquipmentsDTO) => Promise<EquipmentWithLocation[]>;
-  findOneEquipment: (dto: FindEquipmentsDTO) => Promise<EquipmentWithLocation>;
-  createEquipment: (dto: CreateEquipmentDTO) => Promise<Equipment>;
-  updateEquipment: (dto: UpdateEquipmentDTO) => Promise<Equipment>;
-  deleteEquipment: (dto: DeleteEquipmentDTO) => Promise<void>;
+  findEquipments: (dto: FindEquipmentsDTO) => Promise<Result<EquipmentWithLocation[]>>;
+  findOneEquipment: (dto: FindOneEquipmentDTO) => Promise<Result<EquipmentWithLocation>>;
+  createEquipment: (dto: CreateEquipmentDTO) => Promise<Result<Equipment>>;
+  updateEquipment: (dto: UpdateEquipmentDTO) => Promise<Result<Equipment>>;
+  deleteEquipment: (dto: DeleteEquipmentDTO) => Promise<Result<void>>;
 }

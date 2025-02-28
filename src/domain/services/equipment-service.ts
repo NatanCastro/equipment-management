@@ -1,13 +1,14 @@
-import { FindEquipmentsDTO, CreateEquipmentDTO, UpdateEquipmentDTO, DeleteEquipmentDTO } from "@/data/dtos";
+import { FindEquipmentsDTO, CreateEquipmentDTO, UpdateEquipmentDTO, DeleteEquipmentDTO, FindOneEquipmentDTO } from "@/data/dtos";
 import { Equipment, EquipmentWithLocation } from "@/domain/models";
 import { EquipmentRepository } from "@/domain/repositories";
+import { err, isErr, Result } from "@/types/result";
 
 export type EquipmentService = {
-  findEquipments: (dto: FindEquipmentsDTO) => Promise<EquipmentWithLocation[]>;
-  findOneEquipment: (dto: FindEquipmentsDTO) => Promise<EquipmentWithLocation>;
-  createEquipment: (dto: CreateEquipmentDTO) => Promise<Equipment>;
-  updateEquipment: (dto: UpdateEquipmentDTO) => Promise<Equipment>;
-  deleteEquipment: (dto: DeleteEquipmentDTO) => Promise<void>;
+  findEquipments: (dto: FindEquipmentsDTO) => Promise<Result<EquipmentWithLocation[], string>>;
+  findOneEquipment: (dto: FindOneEquipmentDTO) => Promise<Result<EquipmentWithLocation, string>>;
+  createEquipment: (dto: CreateEquipmentDTO) => Promise<Result<Equipment, string>>;
+  updateEquipment: (dto: UpdateEquipmentDTO) => Promise<Result<Equipment, string>>;
+  deleteEquipment: (dto: DeleteEquipmentDTO) => Promise<Result<void, string>>;
 }
 
 type NewEquipmentService = (repository: EquipmentRepository) => EquipmentService;
@@ -15,23 +16,39 @@ type NewEquipmentService = (repository: EquipmentRepository) => EquipmentService
 export const newEquipmentService: NewEquipmentService = (repository: EquipmentRepository) => {
   return {
     findEquipments: async (dto) => {
-      const result: EquipmentWithLocation[] = await repository.findEquipments(dto);
+      const result = await repository.findEquipments(dto);
+      if (isErr(result)) {
+        return err(`Não foi possível buscar os equipamentos: ${result.err.message}`);
+      }
       return result;
     },
     findOneEquipment: async (dto) => {
-      const result: EquipmentWithLocation = await repository.findOneEquipment(dto);
+      const result = await repository.findOneEquipment(dto);
+      if (isErr(result)) {
+        return err(`Não foi possível buscar o equipamento com o id ${dto.id}: ${result.err.message}`);
+      }
       return result;
     },
-    createEquipment: async (dto) => {
-      const result: Equipment = await repository.createEquipment(dto);
+    createEquipment: async (dto: CreateEquipmentDTO) => {
+      const result = await repository.createEquipment(dto);
+      if (isErr(result)) {
+        return err(`Não foi possível criar o equipamento: ${result.err.message}`);
+      }
       return result;
     },
-    updateEquipment: async (dto) => {
-      const result: Equipment = await repository.updateEquipment(dto);
+    updateEquipment: async (dto: UpdateEquipmentDTO) => {
+      const result = await repository.updateEquipment(dto);
+      if (isErr(result)) {
+        return err(`Não foi possível atualizar o equipamento com o id ${dto.id}: ${result.err.message}`);
+      }
       return result;
     },
-    deleteEquipment: async (dto) => {
-      await repository.deleteEquipment(dto);
+    deleteEquipment: async (dto: DeleteEquipmentDTO) => {
+      const result = await repository.deleteEquipment(dto);
+      if (isErr(result)) {
+        return err(`Não foi possível excluir o equipamento com o id ${dto.id}: ${result.err.message}`);
+      }
+      return result;
     },
   }
 }

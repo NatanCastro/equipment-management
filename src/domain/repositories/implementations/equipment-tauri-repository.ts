@@ -1,21 +1,11 @@
-import { invoke } from "@tauri-apps/api/core";
 import { EquipmentRepository } from "../equipment-repository";
+import { invokeTauriCommand } from "./tauri-repository-utils";
 
 export const equipmentTauriRepository: EquipmentRepository = {
-  findEquipments: async (dto) => {
-    return await invoke("find_equipments", { dto });
-  },
-  findOneEquipment: async (dto) => {
-    return await invoke("find_one_equipment", { dto });
-  },
-  createEquipment: async (dto) => {
-    return await invoke("create_equipment", { dto });
-  },
-  updateEquipment: async (dto) => {
-    return await invoke("update_equipment", { dto });
-  },
-  deleteEquipment: async (dto) => {
-    await invoke("delete_equipment", { dto });
-  },
+  findEquipments: async (dto) => invokeTauriCommand("find_equipments", { dto }),
+  findOneEquipment: async (dto) => invokeTauriCommand("find_one_equipment", { dto }),
+  createEquipment: async (dto) => invokeTauriCommand("create_equipment", { dto }),
+  updateEquipment: async (dto) => invokeTauriCommand("update_equipment", { dto }),
+  deleteEquipment: async (dto) => invokeTauriCommand("delete_equipment", { dto }),
 
 }

@@ -1,7 +1,6 @@
 import { CreateEquipmentLocationDialog, EquipmentLocationSearch, EquipmentLocationsList } from "@/components";
 import { Button } from "@/components/ui/button";
 import { FindEquipmentLocationsDTO } from "@/data/dtos";
-import { EquipmentLocation } from "@/domain/models";
 import { useEquipmentLocationStore } from "@/stores/use-equipment-location-store";
 import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
 import { JSX, useEffect, useState } from "react";
@@ -20,8 +19,15 @@ export default function Locations(): JSX.Element {
 
 
   async function handleSearch(params: FindEquipmentLocationsDTO) {
-    const equipments: EquipmentLocation[] = await findEquipmentLocations(params);
-    setEquipmentLocations(equipments);
+    const equipments = await findEquipmentLocations(params);
+    switch (equipments.tag) {
+      case "ok":
+        setEquipmentLocations(equipments.val);
+        break;
+      case "err":
+        console.log(equipments.err);
+        break;
+    }
   }
 
   function onDialogOpen() {

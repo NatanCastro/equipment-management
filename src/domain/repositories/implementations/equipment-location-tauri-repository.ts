@@ -1,20 +1,10 @@
-import { invoke } from "@tauri-apps/api/core";
 import { EquipmentLocationRepository } from "../equipment-location-repository";
+import { invokeTauriCommand } from "./tauri-repository-utils";
 
 export const equipmentLocationTauriRepository: EquipmentLocationRepository = {
-  findEquipmentLocations: async (dto) => {
-    return await invoke("find_equipment_locations", { dto });
-  },
-  findOneEquipmentLocation: async (dto) => {
-    return await invoke("find_one_equipment_location", { dto });
-  },
-  createEquipmentLocation: async (dto) => {
-    return await invoke("create_equipment_location", { dto });
-  },
-  updateEquipmentLocation: async (dto) => {
-    return await invoke("update_equipment_location", { dto });
-  },
-  deleteEquipmentLocation: async (dto) => {
-    await invoke("delete_equipment_location", { dto });
-  },
+  findEquipmentLocations: async (dto) => invokeTauriCommand("find_equipment_locations", { dto }),
+  findOneEquipmentLocation: async (dto) => invokeTauriCommand("find_one_equipment_location", { dto }),
+  createEquipmentLocation: async (dto) => invokeTauriCommand("create_equipment_location", { dto }),
+  updateEquipmentLocation: async (dto) => invokeTauriCommand("update_equipment_location", { dto }),
+  deleteEquipmentLocation: async (dto) => invokeTauriCommand("delete_equipment_location", { dto }),
 }

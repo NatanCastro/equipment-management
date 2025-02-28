@@ -1,7 +1,6 @@
 import { CreateEquipmentDialog, EquipmentsList } from "@/components";
 import { Button } from "@/components/ui/button";
 import { FindEquipmentsDTO } from "@/data/dtos";
-import { Equipment } from "@/domain/models";
 import { useEquipmentStore } from "@/stores/use-equipment-store";
 import { JSX, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -21,8 +20,15 @@ export default function Home(): JSX.Element {
 
 
   async function handleSearch(params: FindEquipmentsDTO) {
-    const equipments: Equipment[] = await findEquipments(params);
-    setEquipments(equipments);
+    const equipments = await findEquipments(params);
+    switch (equipments.tag) {
+      case "ok":
+        setEquipments(equipments.val);
+        break;
+      case "err":
+        console.log(equipments.err);
+        break;
+    }
   }
 
   function onDialogOpen() {
