@@ -1,4 +1,7 @@
 import { equipmentTauriRepository } from "@/domain/repositories/impl";
 import { newEquipmentService } from "@/domain/services";
+import { createContext, useContext } from "react";
 
-export const useEquipmentService = () => newEquipmentService(equipmentTauriRepository);
+const equipmentServiceContext = createContext(newEquipmentService(equipmentTauriRepository));
+
+export const useEquipmentService = () => useContext(equipmentServiceContext);

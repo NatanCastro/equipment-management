@@ -1,4 +1,4 @@
-import { UseEquipmentStore } from "@/data/stores";
+import { UseEquipmentStore } from "@/data/states";
 import { create } from "zustand";
 
 

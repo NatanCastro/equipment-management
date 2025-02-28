@@ -2,7 +2,7 @@ import { CreateEquipmentLocationDialog, EquipmentLocationSearch, EquipmentLocati
 import { Button } from "@/components/ui/button";
 import { FindEquipmentLocationsDTO } from "@/data/dtos";
 import { EquipmentLocation } from "@/domain/models";
-import { useEquipmentLocationStore } from "@/hooks/use-equipment-location";
+import { useEquipmentLocationStore } from "@/stores/use-equipment-location-store";
 import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
 import { JSX, useEffect, useState } from "react";
 import { useNavigate } from "react-router";

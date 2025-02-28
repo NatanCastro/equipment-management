@@ -2,7 +2,7 @@ import { FindEquipmentsDTO, CreateEquipmentDTO, UpdateEquipmentDTO, DeleteEquipm
 import { Equipment, EquipmentWithLocation } from "@/domain/models";
 import { EquipmentRepository } from "@/domain/repositories";
 
-type EquipmentService = {
+export type EquipmentService = {
   findEquipments: (dto: FindEquipmentsDTO) => Promise<EquipmentWithLocation[]>;
   findOneEquipment: (dto: FindEquipmentsDTO) => Promise<EquipmentWithLocation>;
   createEquipment: (dto: CreateEquipmentDTO) => Promise<Equipment>;
