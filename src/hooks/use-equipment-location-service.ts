@@ -1,4 +1,4 @@
-import { equipmentLocationTauriRepository } from "@/domain/repositories/impl";
+import { equipmentLocationTauriRepository } from "@/domain/repositories/implementations";
 import { newEquipmentLocationService } from "@/domain/services";
 import { createContext, useContext } from "react";
 
