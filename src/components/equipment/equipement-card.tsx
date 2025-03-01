@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Equipment } from "@/domain/models";
+import { EquipmentWithLocation } from "@/domain/models";
 import { NavLink } from "react-router";
 
 type EquipmentCardProps = {
-  equipment: Equipment;
+  equipment: EquipmentWithLocation;
 };
 
 function formatDateString(dateString: string) {
@@ -23,6 +23,11 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
         <pre className="truncate-text-4 text-accent-foreground">
           {equipment.description}
         </pre>
+        {equipment.location_name && (
+          <p className="text-foreground">
+            Localização: {equipment.location_name}
+          </p>
+        )}
         <p className="text-foreground">
           Última atualização: {formatDateString(equipment.updated_at)}
         </p>
