@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./css/truncate-text.css";
+@import "./truncate-text.css";
 
 @plugin "tailwindcss-animate";
 
