@@ -3,13 +3,15 @@ SELECT
   e.service_tag,
   e.name,
   e.description,
-  e.location_id,
+  e.equipment_location_id AS location_id,
   location.name AS location_name,
   e.created_at,
   e.updated_at
-FROM equipment AS e WHERE
-(service_tag IS NOT NULL AND service_tag LIKE '%' || ? || '%') AND
-(name IS NOT NULL AND name LIKE '%' || ? || '%') AND
-(description IS NOT NULL AND description LIKE '%' || ? || '%') AND
-(? = "all" OR location_id = ?)
-LEFT JOIN equipment_location AS location ON location.id = e.location_id;
+FROM equipment AS e
+LEFT JOIN equipment_location AS location ON location.id = e.equipment_location_id
+WHERE
+(e.service_tag IS NOT NULL AND e.service_tag LIKE '%' || ? || '%') AND
+(e.name IS NOT NULL AND e.name LIKE '%' || ? || '%') AND
+(e.description IS NOT NULL AND e.description LIKE '%' || ? || '%') AND
+(? = "all" OR e.equipment_location_id = ?)
+ORDER BY e.name DESC

@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { FindEquipmentsDTO } from "@/data/dtos";
+import { EquipmentLocation } from "@/domain/models";
+import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
+import { isErr } from "@/types/result";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type EquipmentSearchProps = {
@@ -10,10 +15,26 @@ type EquipmentSearchProps = {
 
 export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
   const form = useForm<FindEquipmentsDTO>();
+  const { findEquipmentLocations } = useEquipmentLocationService();
+  const [locations, setLocations] = useState<EquipmentLocation[]>([]);
 
   const onSubmit: SubmitHandler<FindEquipmentsDTO> = (data) => {
+    console.log(data);
     setSearchState(data);
   };
+
+  useEffect(() => {
+    findEquipmentLocations({
+      name: "",
+      description: "",
+    }).then((result) => {
+      if (isErr(result)) {
+        console.error(result.err);
+      } else {
+        setLocations(result.val);
+      }
+    });
+  }, []);
 
   return (
     <Form {...form}>
@@ -25,7 +46,7 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
             <FormItem>
               <FormLabel>Tag de Serviço:</FormLabel>
               <FormControl>
-                <Input placeholder="145142" {...field} />
+                <Input placeholder="145142" {...field} defaultValue="" />
               </FormControl>
             </FormItem>
           )}
@@ -38,7 +59,7 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
             <FormItem>
               <FormLabel>Nome:</FormLabel>
               <FormControl>
-                <Input placeholder="computador dell" {...field} />
+                <Input placeholder="computador dell" {...field} defaultValue="" />
               </FormControl>
             </FormItem>
           )}
@@ -51,7 +72,7 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
             <FormItem>
               <FormLabel>Descrição:</FormLabel>
               <FormControl>
-                <Input placeholder="16gb de ram..." {...field} />
+                <Input placeholder="16gb de ram..." {...field} defaultValue="" />
               </FormControl>
             </FormItem>
           )}
@@ -64,7 +85,19 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
             <FormItem>
               <FormLabel>Localização:</FormLabel>
               <FormControl>
-                <Input placeholder="all" {...field} />
+                <Select onValueChange={field.onChange} defaultValue={field.value || "all"}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione uma localização" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos</SelectItem>
+                    {locations.map((location) => (
+                      <SelectItem key={location.id} value={location.id}>
+                        {location.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </FormControl>
             </FormItem>
           )}

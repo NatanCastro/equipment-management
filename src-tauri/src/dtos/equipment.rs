@@ -2,11 +2,11 @@ use serde::{Deserialize, Serialize};
 
 #[derive(sqlx::FromRow, Deserialize, Serialize, Clone, Debug)]
 pub struct EquipmentWithLocationDto {
-    pub id: i32,
+    pub id: String,
     pub service_tag: String,
     pub name: String,
     pub description: String,
-    pub location_id: i32,
+    pub location_id: String,
     pub location_name: String,
     pub created_at: String,
     pub updated_at: String,

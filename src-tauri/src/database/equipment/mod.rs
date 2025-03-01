@@ -38,6 +38,12 @@ pub async fn find_equipment(
     let name = find_equipment_dto.name.clone().unwrap_or_default();
     let description = find_equipment_dto.description.clone().unwrap_or_default();
     let location_id = find_equipment_dto.location_id.clone().unwrap_or_default();
+
+    println!("service_tag: {:?}", service_tag);
+    println!("name: {:?}", name);
+    println!("description: {:?}", description);
+    println!("location_id: {:?}", location_id);
+
     build_query_with_params(
         FIND_EQUIPMENT_QUERY,
         [
