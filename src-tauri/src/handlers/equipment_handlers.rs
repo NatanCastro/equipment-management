@@ -1,9 +1,11 @@
 use tauri::State;
 
-use crate::database::equipment::dto::{
-    DeleteEquipmentDto, FindEquipmentDto, FindOneEquipmentDto, NewEquipmentDto, UpdateEquipmentDto,
+use crate::database::equipment;
+use crate::dtos::equipment::{
+    DeleteEquipmentDto, EquipmentWithLocationDto, FindEquipmentDto, FindOneEquipmentDto,
+    NewEquipmentDto, UpdateEquipmentDto,
 };
-use crate::database::equipment::Equipment;
+use crate::models::equipment::Equipment;
 
 #[tauri::command]
 pub async fn create_equipment(
@@ -12,7 +14,7 @@ pub async fn create_equipment(
 ) -> Result<Equipment, String> {
     let pool = &state.pool;
     let logger = &state.logger;
-    match crate::database::equipment::insert_equipment(pool, &dto).await {
+    match equipment::insert_equipment(pool, &dto).await {
         Ok(equipment) => {
             logger.info(&format!("Created equipment with id {}", equipment.id));
             Ok(equipment)
@@ -29,10 +31,10 @@ pub async fn create_equipment(
 pub async fn find_equipments(
     state: State<'_, crate::AppContext>,
     dto: FindEquipmentDto,
-) -> Result<Vec<Equipment>, String> {
+) -> Result<Vec<EquipmentWithLocationDto>, String> {
     let pool = &state.pool;
     let logger = &state.logger;
-    match crate::database::equipment::find_equipment(pool, &dto).await {
+    match equipment::find_equipment(pool, &dto).await {
         Ok(equipments) => {
             logger.info(&format!("Found {} equipments", equipments.len()));
             Ok(equipments)
@@ -52,7 +54,7 @@ pub async fn find_one_equipment(
 ) -> Result<Equipment, String> {
     let pool = &state.pool;
     let logger = &state.logger;
-    match crate::database::equipment::find_one_equipment(pool, &dto).await {
+    match equipment::find_one_equipment(pool, &dto).await {
         Ok(equipment) => {
             logger.info(&format!("Found equipment with id {}", equipment.id));
             Ok(equipment)
@@ -72,7 +74,7 @@ pub async fn update_equipment(
 ) -> Result<Equipment, String> {
     let pool = &state.pool;
     let logger = &state.logger;
-    match crate::database::equipment::update_equipment(pool, &dto).await {
+    match equipment::update_equipment(pool, &dto).await {
         Ok(equipment) => {
             logger.info(&format!(
                 "Updated equipment with id {} to {}",
@@ -95,7 +97,7 @@ pub async fn delete_equipment(
 ) -> Result<(), String> {
     let pool = &state.pool;
     let logger = &state.logger;
-    match crate::database::equipment::delete_equipment(pool, &dto).await {
+    match equipment::delete_equipment(pool, &dto).await {
         Ok(_) => {
             logger.info(&format!("Deleted equipment with id {}", dto.id));
             Ok(())

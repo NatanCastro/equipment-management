@@ -3,8 +3,10 @@ use logger::Logger;
 use tauri::Manager;
 
 pub mod database;
+pub mod dtos;
 pub mod handlers;
 pub mod logger;
+pub mod models;
 
 pub struct AppContext {
     pub pool: Db,

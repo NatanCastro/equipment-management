@@ -1,11 +1,13 @@
 use tauri::State;
 
-use crate::database::equipment_location::dto::{
+use crate::dtos::equipment_location::{
     DeleteEquipmentLocationDto, FindEquipmentLocationDto, FindOneEquipmentLocationDto,
     NewEquipmentLocationDto, UpdateEquipmentLocationDto,
 };
 
-use crate::database::equipment_location::{self, EquipmentLocation};
+use crate::models::equipment_location::EquipmentLocation;
+
+use crate::database::equipment_location;
 
 #[tauri::command]
 pub async fn create_equipment_location(
