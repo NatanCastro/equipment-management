@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use dto::{FindHistoryResultDto, InsertHistoryResultDto};
 use uuid::Uuid;
 
-use crate::dtos::history::{FindHistoryDto, NewHistoryDto};
+use crate::dtos::history::{DeleteHistoryDto, FindHistoryDto, NewHistoryDto, UpdateHistoryDto};
 
 use crate::database::equipment::update_equipment;
 use crate::models::history::{History, ShortEquipement};
@@ -15,6 +15,8 @@ use super::build_query_with_params;
 const INSERT_HISTORY_QUERY: &str = include_str!("./queries/insert.sql");
 const CREATE_JOIN_QUERY: &str = include_str!("./queries/create_join.sql");
 const FIND_HISTORY_QUERY: &str = include_str!("./queries/find.sql");
+const UPDATE_HISTORY_QUERY: &str = include_str!("./queries/update.sql");
+const DELETE_HISTORY_QUERY: &str = include_str!("./queries/delete.sql");
 
 async fn insert_history_equipment_join(
     pool: &sqlx::SqlitePool,
@@ -110,4 +112,29 @@ pub async fn find_equipment_history(
     .await;
 
     result.map(format_find_history_query_result)
+}
+
+pub async fn update_equipment_history(
+    pool: &sqlx::SqlitePool,
+    update_equipment_history_dto: &UpdateHistoryDto,
+) -> Result<(), sqlx::Error> {
+    build_query_with_params(
+        UPDATE_HISTORY_QUERY,
+        [
+            &update_equipment_history_dto.title,
+            &update_equipment_history_dto.description,
+            &update_equipment_history_dto.id,
+        ],
+    )
+    .fetch_one(pool)
+    .await
+}
+
+pub async fn delete_equipment_history(
+    pool: &sqlx::SqlitePool,
+    delete_equipment_history_dto: &DeleteHistoryDto,
+) -> Result<(), sqlx::Error> {
+    build_query_with_params(DELETE_HISTORY_QUERY, [&delete_equipment_history_dto.id])
+        .fetch_one(pool)
+        .await
 }

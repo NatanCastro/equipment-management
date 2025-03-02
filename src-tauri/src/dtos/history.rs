@@ -10,7 +10,6 @@ pub struct UpdateHistoryDto {
     pub id: String,
     pub title: String,
     pub description: String,
-    pub equipment_ids: Vec<String>,
 }
 
 pub struct DeleteHistoryDto {
