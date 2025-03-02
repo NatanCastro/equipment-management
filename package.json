@@ -1,48 +1,48 @@
 {
-  "name": "equipment-management",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "tauri": "tauri",
-    "devtools": "react-devtools"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^4.1.0",
-    "@radix-ui/react-dialog": "^1.1.6",
-    "@radix-ui/react-label": "^2.1.2",
-    "@radix-ui/react-select": "^2.1.6",
-    "@radix-ui/react-slot": "^1.1.2",
-    "@tailwindcss/vite": "^4.0.5",
-    "@tauri-apps/api": "^2.2.0",
-    "@tauri-apps/plugin-opener": "^2.2.5",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.475.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-hook-form": "^7.54.2",
-    "react-router": "^7.1.5",
-    "tailwind-merge": "^3.0.2",
-    "tailwindcss": "^4.0.6",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.2",
-    "zustand": "^5.0.3"
-  },
-  "devDependencies": {
-    "@tauri-apps/cli": "^2.2.7",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react": "^4.3.4",
-    "typescript": "~5.6.3",
-    "vite": "^6.1.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  }
+	"name": "equipment-management",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"tauri": "tauri",
+		"format": "biome format --write",
+		"lint": "biome lint --write"
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^4.1.0",
+		"@radix-ui/react-dialog": "^1.1.6",
+		"@radix-ui/react-label": "^2.1.2",
+		"@radix-ui/react-select": "^2.1.6",
+		"@radix-ui/react-slot": "^1.1.2",
+		"@tailwindcss/vite": "^4.0.5",
+		"@tauri-apps/api": "^2.2.0",
+		"@tauri-apps/plugin-opener": "^2.2.5",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.475.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-hook-form": "^7.54.2",
+		"react-router": "^7.1.5",
+		"tailwind-merge": "^3.0.2",
+		"tailwindcss": "^4.0.6",
+		"tailwindcss-animate": "^1.0.7",
+		"zod": "^3.24.2",
+		"zustand": "^5.0.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@tauri-apps/cli": "^2.2.7",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
+		"@vitejs/plugin-react": "^4.3.4",
+		"typescript": "~5.6.3",
+		"vite": "^6.1.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": ["esbuild"]
+	}
 }
