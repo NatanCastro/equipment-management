@@ -20,7 +20,22 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
 
   const onSubmit: SubmitHandler<FindEquipmentsDTO> = (data) => {
     console.log(data);
-    setSearchState(data);
+    setSearchState({
+      description: data.description,
+      name: data.name,
+      service_tag: data.service_tag,
+      location_id: data.location_id ?? "all",
+    });
+  };
+  const onReset = () => {
+    const resetValues: FindEquipmentsDTO = {
+      description: "",
+      name: "",
+      service_tag: "",
+      location_id: "all",
+    };
+    form.reset(resetValues);
+    setSearchState(resetValues);
   };
 
   useEffect(() => {
@@ -46,7 +61,7 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
             <FormItem>
               <FormLabel>Tag de Serviço:</FormLabel>
               <FormControl>
-                <Input placeholder="145142" {...field} defaultValue="" />
+                <Input placeholder="145142" {...field} />
               </FormControl>
             </FormItem>
           )}
@@ -85,7 +100,7 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
             <FormItem>
               <FormLabel>Localização:</FormLabel>
               <FormControl>
-                <Select onValueChange={field.onChange} defaultValue={field.value || "all"}>
+                <Select onValueChange={field.onChange} value={field.value} defaultValue="all">
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione uma localização" />
                   </SelectTrigger>
@@ -103,9 +118,12 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
           )}
         />
 
-        <Button type="submit">
-          Pesquisar
-        </Button>
+        <div className="flex justify-between">
+          <Button type="reset" variant="outline" onClick={onReset}>Limpar</Button>
+          <Button type="submit">
+            Pesquisar
+          </Button>
+        </div>
       </form>
     </Form>
   );

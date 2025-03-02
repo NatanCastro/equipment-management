@@ -15,6 +15,15 @@ export function EquipmentLocationSearch({ setSearchState }: EquipmentSearchProps
     setSearchState(data);
   };
 
+  const onReset = () => {
+    const resetValues: FindEquipmentLocationsDTO = {
+      name: "",
+      description: "",
+    };
+    form.reset(resetValues);
+    setSearchState(resetValues);
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 p-4">
@@ -44,9 +53,10 @@ export function EquipmentLocationSearch({ setSearchState }: EquipmentSearchProps
           )}
         />
 
-        <Button type="submit">
-          Pesquisar
-        </Button>
+        <div className="flex justify-between">
+          <Button type="reset" variant="outline" onClick={onReset}>Limpar</Button>
+          <Button type="submit">Pesquisar</Button>
+        </div>
       </form>
     </Form>
   );
