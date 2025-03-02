@@ -1,9 +1,9 @@
 import type { FindEquipmentsDTO } from "../dtos"
-import type { Equipment } from "@/domain/models"
+import type { EquipmentWithLocation } from "@/domain/models"
 
 export type UseEquipmentStore = {
-	equipments: Equipment[]
-	setEquipments: (equipments: Equipment[]) => void
+	equipments: EquipmentWithLocation[]
+	setEquipments: (equipments: EquipmentWithLocation[]) => void
 	equipmentSearchState: FindEquipmentsDTO
 	setEquipmentSearchState: (state: FindEquipmentsDTO) => void
 }
