@@ -13,7 +13,7 @@ function formatDateString(dateString: string) {
 
 export function EquipmentLocationCard({ equipmentLocation }: EquipmentCardProps) {
   return (
-    <Card className="rounded-lg bg-accent/30 border-2 border-accent shadow-lg">
+    <Card className="shadow-2xl shadow-accent rounded-lg border-2 border-accent-foreground/50 bg-accent/60">
       <CardContent className="p-4 gap-4 flex flex-col">
         <h3
           className="text-2xl text-center truncate-text-1 text-foreground"

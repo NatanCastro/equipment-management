@@ -23,7 +23,7 @@ export function CreateEquipmentLocationDialog({ isOpen, onClose }: CreateEquipme
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-96">
+      <DialogContent className="bg-background text-white p-6 rounded-lg shadow-lg w-96">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">Create New Equipment Location</DialogTitle>
         </DialogHeader>
@@ -37,7 +37,7 @@ export function CreateEquipmentLocationDialog({ isOpen, onClose }: CreateEquipme
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input {...field} className="bg-gray-700" />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -51,7 +51,7 @@ export function CreateEquipmentLocationDialog({ isOpen, onClose }: CreateEquipme
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input {...field} className="bg-gray-700" />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

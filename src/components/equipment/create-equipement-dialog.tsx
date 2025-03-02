@@ -23,7 +23,7 @@ export function CreateEquipmentDialog({ isOpen, onClose }: CreateEquipmentDialog
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-background-secondary text-white p-6 rounded-lg shadow-lg w-96">
+      <DialogContent className="bg-background text-white p-6 rounded-lg shadow-lg w-96">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">Create New Equipment</DialogTitle>
         </DialogHeader>
