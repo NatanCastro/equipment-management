@@ -27,9 +27,9 @@ export function EquipmentSearch({ setSearchState }: EquipmentSearchProps) {
 	const onSubmit: SubmitHandler<FindEquipmentsDTO> = (data) => {
 		console.log(data)
 		setSearchState({
-			description: data.description,
-			name: data.name,
-			service_tag: data.service_tag,
+			description: data.description ?? "",
+			name: data.name ?? "",
+			service_tag: data.service_tag ?? "",
 			location_id: data.location_id ?? "all"
 		})
 	}
