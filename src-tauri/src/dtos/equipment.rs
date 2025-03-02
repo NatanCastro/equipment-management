@@ -36,10 +36,10 @@ pub struct DeleteEquipmentDto {
 
 #[derive(Deserialize, Serialize, Clone, Debug)]
 pub struct FindEquipmentDto {
-    pub service_tag: Option<String>,
-    pub name: Option<String>,
-    pub description: Option<String>,
-    pub location_id: Option<String>,
+    pub service_tag: String,
+    pub name: String,
+    pub description: String,
+    pub location_id: String,
 }
 
 #[derive(Deserialize, Serialize, Clone, Debug)]

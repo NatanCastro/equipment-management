@@ -20,8 +20,8 @@ pub struct DeleteEquipmentLocationDto {
 
 #[derive(Deserialize, Serialize, Clone, Debug)]
 pub struct FindEquipmentLocationDto {
-    pub name: Option<String>,
-    pub description: Option<String>,
+    pub name: String,
+    pub description: String,
 }
 
 #[derive(Deserialize, Serialize, Clone, Debug)]
