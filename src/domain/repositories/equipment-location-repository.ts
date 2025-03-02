@@ -1,6 +1,6 @@
-import { FindEquipmentLocationsDTO, CreateEquipmentLocationDTO, UpdateEquipmentLocationDTO, DeleteEquipmentLocationDTO, FindOneEquipmentLocationDTO } from "@/data/dtos";
-import { Result } from "@/types/result";
-import { EquipmentLocation } from "domain/models";
+import type { FindEquipmentLocationsDTO, CreateEquipmentLocationDTO, UpdateEquipmentLocationDTO, DeleteEquipmentLocationDTO, FindOneEquipmentLocationDTO } from "@/data/dtos";
+import type { Result } from "@/types/result";
+import type { EquipmentLocation } from "domain/models";
 
 export type EquipmentLocationRepository = {
   findEquipmentLocations: (dto: FindEquipmentLocationsDTO) => Promise<Result<EquipmentLocation[]>>;

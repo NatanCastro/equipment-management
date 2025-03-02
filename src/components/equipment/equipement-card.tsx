@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { EquipmentWithLocation } from "@/domain/models";
+import type { EquipmentWithLocation } from "@/domain/models";
 import { NavLink } from "react-router";
 
 type EquipmentCardProps = {

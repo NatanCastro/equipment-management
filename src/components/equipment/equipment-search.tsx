@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FindEquipmentsDTO } from "@/data/dtos";
-import { EquipmentLocation } from "@/domain/models";
+import type { FindEquipmentsDTO } from "@/data/dtos";
+import type { EquipmentLocation } from "@/domain/models";
 import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
 import { isErr } from "@/types/result";
 import { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 type EquipmentSearchProps = {
   setSearchState: (state: FindEquipmentsDTO) => void;

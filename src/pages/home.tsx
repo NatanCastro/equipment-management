@@ -1,8 +1,8 @@
 import { CreateEquipmentDialog, EquipmentsList } from "@/components";
 import { Button } from "@/components/ui/button";
-import { FindEquipmentsDTO } from "@/data/dtos";
+import type { FindEquipmentsDTO } from "@/data/dtos";
 import { useEquipmentStore } from "@/stores/use-equipment-store";
-import { JSX, useEffect, useState } from "react";
+import { type JSX, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { EquipmentSearch } from "@/components/equipment/equipment-search";
 import { useEquipmentService } from "@/hooks/use-equipment-service";

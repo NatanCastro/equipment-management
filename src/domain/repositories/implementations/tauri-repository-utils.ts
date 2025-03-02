@@ -1,4 +1,4 @@
-import { err, ok, Result } from "@/types/result";
+import { err, ok, type Result } from "@/types/result";
 import { invoke } from "@tauri-apps/api/core";
 
 type Payload = Record<string, unknown>;

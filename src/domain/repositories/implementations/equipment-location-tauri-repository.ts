@@ -1,4 +1,4 @@
-import { EquipmentLocationRepository } from "../equipment-location-repository";
+import type { EquipmentLocationRepository } from "../equipment-location-repository";
 import { invokeTauriCommand } from "./tauri-repository-utils";
 
 export const equipmentLocationTauriRepository: EquipmentLocationRepository = {

@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CreateEquipmentDTO } from "@/data/dtos";
+import type { CreateEquipmentDTO } from "@/data/dtos";
 import { useEquipmentService } from "@/hooks/use-equipment-service";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 type CreateEquipmentDialogProps = {
   isOpen: boolean;

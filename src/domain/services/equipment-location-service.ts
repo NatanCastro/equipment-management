@@ -1,7 +1,7 @@
-import { FindEquipmentLocationsDTO, CreateEquipmentLocationDTO, UpdateEquipmentLocationDTO, DeleteEquipmentLocationDTO, FindOneEquipmentLocationDTO } from "@/data/dtos";
-import { EquipmentLocation } from "@/domain/models";
-import { EquipmentLocationRepository } from "@/domain/repositories";
-import { Result, isErr, err } from "@/types/result";
+import type { FindEquipmentLocationsDTO, CreateEquipmentLocationDTO, UpdateEquipmentLocationDTO, DeleteEquipmentLocationDTO, FindOneEquipmentLocationDTO } from "@/data/dtos";
+import type { EquipmentLocation } from "@/domain/models";
+import type { EquipmentLocationRepository } from "@/domain/repositories";
+import { type Result, isErr, err } from "@/types/result";
 
 export type EquipmentLocationService = {
   findEquipmentLocations: (dto: FindEquipmentLocationsDTO) => Promise<Result<EquipmentLocation[], string>>;

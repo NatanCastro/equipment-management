@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FindEquipmentLocationsDTO } from "@/data/dtos";
-import { SubmitHandler, useForm } from "react-hook-form";
+import type { FindEquipmentLocationsDTO } from "@/data/dtos";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 type EquipmentSearchProps = {
   setSearchState: (state: FindEquipmentLocationsDTO) => void;

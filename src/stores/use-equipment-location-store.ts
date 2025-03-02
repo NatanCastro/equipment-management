@@ -1,4 +1,4 @@
-import { UseEquipmentLocation } from "@/data/states/equipment-location-store";
+import type { UseEquipmentLocation } from "@/data/states/equipment-location-store";
 import { create } from "zustand";
 
 

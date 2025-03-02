@@ -1,9 +1,9 @@
 import { CreateEquipmentLocationDialog, EquipmentLocationSearch, EquipmentLocationsList } from "@/components";
 import { Button } from "@/components/ui/button";
-import { FindEquipmentLocationsDTO } from "@/data/dtos";
+import type { FindEquipmentLocationsDTO } from "@/data/dtos";
 import { useEquipmentLocationStore } from "@/stores/use-equipment-location-store";
 import { useEquipmentLocationService } from "@/hooks/use-equipment-location-service";
-import { JSX, useEffect, useState } from "react";
+import { type JSX, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function Locations(): JSX.Element {
