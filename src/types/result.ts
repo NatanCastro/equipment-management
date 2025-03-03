@@ -3,7 +3,7 @@ type Ok<T, _> = {
 	val: T
 }
 
-type Err<_, E> = {
+type Err<_, E = Error> = {
 	tag: "err"
 	err: E
 }
