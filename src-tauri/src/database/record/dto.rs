@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(sqlx::FromRow, Deserialize, Serialize, Clone, Debug)]
-pub struct InsertHistoryResultDto {
+pub struct InsertRecordResultDto {
     pub id: String,
     pub title: String,
     pub description: String,
@@ -10,7 +10,7 @@ pub struct InsertHistoryResultDto {
 }
 
 #[derive(sqlx::FromRow, Deserialize, Serialize, Clone, Debug)]
-pub struct FindHistoryResultDto {
+pub struct FindRecordResultDto {
     pub id: String,
     pub title: String,
     pub description: String,
@@ -22,7 +22,7 @@ pub struct FindHistoryResultDto {
 }
 
 #[derive(sqlx::FromRow, Deserialize, Serialize, Clone, Debug)]
-pub struct UpdateHistoryResultDto {
+pub struct UpdateRecordResultDto {
     pub id: String,
     pub title: String,
     pub description: String,

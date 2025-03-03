@@ -28,11 +28,11 @@ pub fn run() {
             handlers::find_one_equipment_location,
             handlers::update_equipment_location,
             handlers::delete_equipment_location,
-            handlers::create_history,
-            handlers::find_history,
-            handlers::find_one_history,
-            handlers::update_history,
-            handlers::delete_history
+            handlers::create_record,
+            handlers::find_record,
+            handlers::find_one_record,
+            handlers::update_record,
+            handlers::delete_record
         ])
         .setup(|app| {
             tauri::async_runtime::block_on(async move {

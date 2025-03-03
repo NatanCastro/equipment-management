@@ -5,7 +5,7 @@ use crate::logger::Logger;
 
 pub mod equipment;
 pub mod equipment_location;
-pub mod history;
+pub mod record;
 
 pub type Db = Pool<Sqlite>;
 

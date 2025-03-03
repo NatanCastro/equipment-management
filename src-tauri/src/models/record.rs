@@ -7,7 +7,7 @@ pub struct ShortEquipement {
 }
 
 #[derive(Deserialize, Serialize, Clone, Debug)]
-pub struct History {
+pub struct Record {
     pub id: String,
     pub title: String,
     pub description: String,
