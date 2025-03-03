@@ -1,8 +1,12 @@
+use serde::{Deserialize, Serialize};
+
+#[derive(Deserialize, Serialize, Clone, Debug)]
 pub struct ShortEquipement {
     pub id: String,
     pub service_tag: String,
 }
 
+#[derive(Deserialize, Serialize, Clone, Debug)]
 pub struct History {
     pub id: String,
     pub title: String,

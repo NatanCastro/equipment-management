@@ -27,7 +27,12 @@ pub fn run() {
             handlers::find_equipment_locations,
             handlers::find_one_equipment_location,
             handlers::update_equipment_location,
-            handlers::delete_equipment_location
+            handlers::delete_equipment_location,
+            handlers::create_history,
+            handlers::find_history,
+            handlers::find_one_history,
+            handlers::update_history,
+            handlers::delete_history
         ])
         .setup(|app| {
             tauri::async_runtime::block_on(async move {
