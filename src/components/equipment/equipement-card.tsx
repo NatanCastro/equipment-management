@@ -24,7 +24,9 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
 					{equipment.description}
 				</pre>
 				{equipment.location_name && (
-					<p className="text-foreground">Localização: {equipment.location_name}</p>
+					<p className="text-foreground">
+						Localização: {equipment.location_name}
+					</p>
 				)}
 				<p className="text-foreground">
 					Última atualização: {formatDateString(equipment.updated_at)}

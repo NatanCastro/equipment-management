@@ -16,8 +16,12 @@ export type EquipmentService = {
 	findOneEquipment: (
 		dto: FindOneEquipmentDTO
 	) => Promise<Result<EquipmentWithLocation, string>>
-	createEquipment: (dto: CreateEquipmentDTO) => Promise<Result<Equipment, string>>
-	updateEquipment: (dto: UpdateEquipmentDTO) => Promise<Result<Equipment, string>>
+	createEquipment: (
+		dto: CreateEquipmentDTO
+	) => Promise<Result<Equipment, string>>
+	updateEquipment: (
+		dto: UpdateEquipmentDTO
+	) => Promise<Result<Equipment, string>>
 	deleteEquipment: (dto: DeleteEquipmentDTO) => Promise<Result<void, string>>
 }
 
@@ -30,7 +34,9 @@ export const newEquipmentService: NewEquipmentService = (
 		findEquipments: async (dto) => {
 			const result = await repository.findEquipments(dto)
 			if (isErr(result)) {
-				return err(`Não foi possível buscar os equipamentos: ${result.err.message}`)
+				return err(
+					`Não foi possível buscar os equipamentos: ${result.err.message}`
+				)
 			}
 			return result
 		},
@@ -46,7 +52,9 @@ export const newEquipmentService: NewEquipmentService = (
 		createEquipment: async (dto: CreateEquipmentDTO) => {
 			const result = await repository.createEquipment(dto)
 			if (isErr(result)) {
-				return err(`Não foi possível criar o equipamento: ${result.err.message}`)
+				return err(
+					`Não foi possível criar o equipamento: ${result.err.message}`
+				)
 			}
 			return result
 		},

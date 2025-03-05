@@ -8,9 +8,14 @@ import { EquipmentSearch } from "@/components/equipment/equipment-search"
 import { useEquipmentService } from "@/hooks/use-equipment-service"
 
 export default function Home(): JSX.Element {
-	const { equipments, setEquipments, equipmentSearchState, setEquipmentSearchState } =
-		useEquipmentStore()
-	const [isCreateEquipmentDialogOpen, setIsCreateEquipmentDialogOpen] = useState(false)
+	const {
+		equipments,
+		setEquipments,
+		equipmentSearchState,
+		setEquipmentSearchState
+	} = useEquipmentStore()
+	const [isCreateEquipmentDialogOpen, setIsCreateEquipmentDialogOpen] =
+		useState(false)
 	const { findEquipments } = useEquipmentService()
 	const navigate = useNavigate()
 
@@ -55,7 +60,9 @@ export default function Home(): JSX.Element {
 				/>
 			</section>
 			<aside className="bg-background p-4 md:col-span-2 md:min-h-screen">
-				<h2 className="text-2xl font-bold text-center text-primary">Pesquisa</h2>
+				<h2 className="text-2xl font-bold text-center text-primary">
+					Pesquisa
+				</h2>
 				<EquipmentSearch setSearchState={setEquipmentSearchState} />
 			</aside>
 		</main>

@@ -10,7 +10,7 @@ import { useEquipmentLocationService } from "@/hooks/use-equipment-location-serv
 import { type JSX, useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 
-export default function Locations(): JSX.Element {
+export default function Records(): JSX.Element {
 	const {
 		equipmentLocations,
 		setEquipmentLocations,

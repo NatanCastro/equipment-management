@@ -14,25 +14,25 @@ import {
 	FormLabel,
 	FormMessage
 } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import type { CreateEquipmentDTO } from "@/data/dtos"
-import { useEquipmentService } from "@/hooks/use-equipment-service"
+import type { CreateRecordDTO } from "@/data/dtos"
 import { type SubmitHandler, useForm } from "react-hook-form"
+import { Input } from "@/components/ui/input"
 
-type CreateEquipmentDialogProps = {
+type CreateRecordDialogProps = {
 	isOpen: boolean
 	onClose: () => void
 }
 
-export function CreateEquipmentDialog({
+export function CreateRecordDialog({
 	isOpen,
 	onClose
-}: CreateEquipmentDialogProps) {
-	const form = useForm<CreateEquipmentDTO>()
-	const { createEquipment } = useEquipmentService()
+}: CreateRecordDialogProps) {
+	const form = useForm<CreateRecordDTO>()
+	// const { createEquipmentLocation } = useEquipmentLocationService()
 
-	const onSubmit: SubmitHandler<CreateEquipmentDTO> = async (data) => {
-		await createEquipment(data)
+	const onSubmit: SubmitHandler<CreateRecordDTO> = async (data) => {
+		// await createEquipmentLocation(data)
+		console.log(data)
 		form.reset()
 		onClose()
 	}
@@ -42,7 +42,7 @@ export function CreateEquipmentDialog({
 			<DialogContent className="bg-background text-white p-6 rounded-lg shadow-lg w-96">
 				<DialogHeader>
 					<DialogTitle className="text-lg font-bold">
-						Create New Equipment
+						Create New Equipment Location
 					</DialogTitle>
 				</DialogHeader>
 
@@ -53,24 +53,10 @@ export function CreateEquipmentDialog({
 					>
 						<FormField
 							control={form.control}
-							name="service_tag"
+							name="title"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Service Tag</FormLabel>
-									<FormControl>
-										<Input {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							control={form.control}
-							name="name"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Name</FormLabel>
+									<FormLabel>Titulo</FormLabel>
 									<FormControl>
 										<Input {...field} />
 									</FormControl>
@@ -84,7 +70,7 @@ export function CreateEquipmentDialog({
 							name="description"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Description</FormLabel>
+									<FormLabel>Descrição</FormLabel>
 									<FormControl>
 										<Input {...field} />
 									</FormControl>
@@ -97,9 +83,7 @@ export function CreateEquipmentDialog({
 							<Button variant="destructive" onClick={onClose}>
 								Cancel
 							</Button>
-							<Button type="submit" className="text-foreground">
-								Create
-							</Button>
+							<Button type="submit">Create</Button>
 						</DialogFooter>
 					</form>
 				</Form>

@@ -21,5 +21,7 @@ export type EquipmentLocationRepository = {
 	updateEquipmentLocation: (
 		dto: UpdateEquipmentLocationDTO
 	) => Promise<Result<EquipmentLocation>>
-	deleteEquipmentLocation: (dto: DeleteEquipmentLocationDTO) => Promise<Result<void>>
+	deleteEquipmentLocation: (
+		dto: DeleteEquipmentLocationDTO
+	) => Promise<Result<void>>
 }

@@ -32,7 +32,7 @@
 	},
 	"javascript": {
 		"formatter": {
-			"lineWidth": 90,
+			"lineWidth": 80,
 			"bracketSpacing": true,
 			"quoteStyle": "double",
 			"semicolons": "asNeeded",

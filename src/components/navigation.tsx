@@ -8,7 +8,9 @@ const links = [
 export const Navigation = () => {
 	return (
 		<aside className="flex flex-col bg-background-secondary md:min-w-[10vw] md:min-h-screen">
-			<h2 className="text-primary text-2xl font-bold text-center mt-8 mb-8">Menu</h2>
+			<h2 className="text-primary text-2xl font-bold text-center mt-8 mb-8">
+				Menu
+			</h2>
 			<nav className="text-foreground flex flex-col w-full">
 				{links.map((link) => (
 					<NavLink
