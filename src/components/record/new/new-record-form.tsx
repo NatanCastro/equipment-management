@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect } from "react"
 import { Controller, useFieldArray, useForm } from "react-hook-form"
 import { MultiEquipmentSelect } from "./multi-equipment-select"
+import type { EquipmentWithLocation } from "@/domain/models"
 
 export function CreateRecordForm() {
   const form = useForm<CreateRecordSchema>({
@@ -37,8 +38,18 @@ export function CreateRecordForm() {
     name: "updated_equipments"
   })
 
-  const removeEquipment = (index: number) => {
-    remove(index)
+  const appendEquipmentForm = (equipment: EquipmentWithLocation) => {
+    append({
+      id: equipment.id,
+      service_tag: equipment.service_tag,
+      name: equipment.name,
+      description: equipment.description,
+      location_id: equipment.location_id
+    })
+  }
+
+  const removeEquipmentForm = (equipment: EquipmentWithLocation) => {
+    remove(equipments.findIndex((item) => item.id === equipment.id))
   }
 
   const { findEquipments } = useEquipmentService()
@@ -76,6 +87,27 @@ export function CreateRecordForm() {
     })()
   }, [])
 
+  const updateSelectedEquipments = (
+    equipment: EquipmentWithLocation,
+    action: "add" | "remove"
+  ) => {
+    switch (action) {
+      case "add":
+        if (selectedEquipments.find((item) => item.id === equipment.id)) {
+          return
+        }
+        appendEquipmentForm(equipment)
+        setSelectedEquipments([...selectedEquipments, equipment])
+        break
+      case "remove":
+        removeEquipmentForm(equipment)
+        setSelectedEquipments(
+          selectedEquipments.filter((item) => item.id !== equipment.id)
+        )
+        break
+    }
+  }
+
   const onSubmit = (data: CreateRecordSchema) => {
     console.log("Form Data:", data)
   }
@@ -110,7 +142,7 @@ export function CreateRecordForm() {
         <MultiEquipmentSelect
           equipments={equipments}
           selectedEquipments={selectedEquipments}
-          setSelectedEquipments={setSelectedEquipments}
+          setSelectedEquipments={updateSelectedEquipments}
         />
 
         {fields.map((field, index) => (
@@ -174,7 +206,21 @@ export function CreateRecordForm() {
 
             <Button
               variant="destructive"
-              onClick={() => removeEquipment(index)}
+              onClick={() =>
+                updateSelectedEquipments(
+                  {
+                    id: field.id,
+                    service_tag: field.service_tag,
+                    name: field.name,
+                    description: field.description,
+                    location_id: field.location_id,
+                    location_name: "",
+                    created_at: "",
+                    updated_at: ""
+                  },
+                  "remove"
+                )
+              }
             >
               Remover
             </Button>

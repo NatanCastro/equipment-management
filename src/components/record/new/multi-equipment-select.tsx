@@ -12,7 +12,10 @@ import type { EquipmentWithLocation } from "@/domain/models"
 type MultiEquipmentSelectProps = {
   equipments: EquipmentWithLocation[]
   selectedEquipments: EquipmentWithLocation[]
-  setSelectedEquipments: (equipments: EquipmentWithLocation[]) => void
+  setSelectedEquipments: (
+    equipment: EquipmentWithLocation,
+    action: "add" | "remove"
+  ) => void
 }
 
 export function MultiEquipmentSelect({
@@ -22,12 +25,9 @@ export function MultiEquipmentSelect({
 }: MultiEquipmentSelectProps) {
   const handleCheckedChange =
     (item: EquipmentWithLocation) => (checked: boolean) => {
-      checked
-        ? setSelectedEquipments([...selectedEquipments, item])
-        : setSelectedEquipments(
-          selectedEquipments.filter((i) => i.id !== item.id)
-        )
+      setSelectedEquipments(item, checked ? "add" : "remove")
     }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
