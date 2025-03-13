@@ -1,9 +1,9 @@
 import { equipmentLocationTauriRepository } from "@/domain/repositories/implementations"
-import { newEquipmentLocationService } from "@/domain/services"
+import { equipmentLocationServiceFactory } from "@/domain/services"
 import { createContext, useContext } from "react"
 
 const equipmentLocationServiceContext = createContext(
-	newEquipmentLocationService(equipmentLocationTauriRepository)
+	equipmentLocationServiceFactory(equipmentLocationTauriRepository)
 )
 
 export const useEquipmentLocationService = () =>

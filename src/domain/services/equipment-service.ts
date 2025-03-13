@@ -9,7 +9,7 @@ import type { Equipment, EquipmentWithLocation } from "@/domain/models"
 import type { EquipmentRepository } from "@/domain/repositories"
 import { err, isErr, type Result } from "@/types/result"
 
-export type EquipmentService = {
+export interface EquipmentService {
 	findEquipments: (
 		dto: FindEquipmentsDTO
 	) => Promise<Result<EquipmentWithLocation[], string>>
@@ -25,10 +25,12 @@ export type EquipmentService = {
 	deleteEquipment: (dto: DeleteEquipmentDTO) => Promise<Result<void, string>>
 }
 
-type NewEquipmentService = (repository: EquipmentRepository) => EquipmentService
-
-export const newEquipmentService: NewEquipmentService = (
+type EquipmentServiceFactory = (
 	repository: EquipmentRepository
+) => EquipmentService
+
+export const equipmentServiceFactory: EquipmentServiceFactory = (
+	repository
 ) => {
 	return {
 		findEquipments: async (dto) => {
